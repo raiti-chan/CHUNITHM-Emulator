@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using Wacom_feel_Multi_Touch_Test.WacomMT.WacomMTDelegates;
 using Wacom_feel_Multi_Touch_Test.WacomMT.WacomMTEnums;
 using Wacom_feel_Multi_Touch_Test.WacomMT.WacomMTStructures;
-using Wacom_feel_Multi_Touch_Test.WacomMT.WacomMTDelegates;
 
 
 /// <summary>
