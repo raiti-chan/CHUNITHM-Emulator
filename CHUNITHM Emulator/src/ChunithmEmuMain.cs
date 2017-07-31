@@ -1,11 +1,16 @@
-﻿using CHUNITHM_Emulator.config;
-using System;
-using System.Windows.Forms;
-using System.Threading;
+﻿using System;
 using System.Diagnostics;
+using System.Windows.Forms;
+using CHUNITHM_Emulator.Chunithm;
+using CHUNITHM_Emulator.Config;
+using CHUNITHM_Emulator.Debug;
 using static DxLibDLL.DX;
 
+
 namespace CHUNITHM_Emulator {
+	/// <summary>
+	/// アプリケーションの起動クラス
+	/// </summary>
 	internal class ChunithmEmuMain {
 
 		/// <summary>
@@ -37,9 +42,8 @@ namespace CHUNITHM_Emulator {
 				}
 			}
 
-			while (ProcessMessage() == 0) {
+			CHUNITHM.Instance.Run();
 
-			}
 			Trace.WriteLine("Exit");
 			DxLib_End();
 		}
@@ -53,28 +57,38 @@ namespace CHUNITHM_Emulator {
 			Trace.Listeners.Add(new LogTraceListerToFile());
 			Trace.WriteLine("PreInit!!");
 
-			ChangeWindowMode(TRUE);//ウィンドウモードに変更
+			ChangeWindowMode(MainConfig.Instance.IsFullScreen ? FALSE : TRUE);//ウィンドウモードに変更
 			SetMainWindowText(NAME + " Ver-" + VERSION);//ウィンドウ名の取得
 			SetAlwaysRunFlag(TRUE);//バックグラウンドでも処理を続けるように
 			SetUseASyncLoadFlag(MainConfig.Instance.UseASyncLoad ? TRUE : FALSE);
 			// SetWindowIconHandle アイコンの設定
 			SetUseFPUPreserveFlag(TRUE);//D3DCREATE_FPU_PRESERVEを使うように
-			SetGraphMode(1028, 720, 32);//グラフィックモードの設定(X,Y,ColorBits)
-			SetFullSceneAntiAliasingMode(2, 2);//アンチエイリアス(解像度倍率,クオリティー0~3)
+			int resolution = MainConfig.Instance.Resolution / 9;
+			SetGraphMode(resolution * 16, resolution * 9, 32);//グラフィックモードの設定(X,Y,ColorBits)(ウィンドウサイズも連動)
+			SetFullSceneAntiAliasingMode(MainConfig.Instance.AntiAliasSamples, MainConfig.Instance.AntiAliasQuality);//アンチエイリアス(解像度倍率,クオリティー0~3)
 
 		}
 
+		/// <summary>
+		/// DXライブラリの初期化や設定、アプリケーションの初期化など。
+		/// </summary>
+		/// <returns>成功の時のみ0</returns>
 		private static int Initialize() {
 
 			Trace.WriteLine("Initialize!");
 
-			if (DxLib_Init() == -1) return -1;//DXライブラリの初期化
+			if (DxLib_Init() == -1) { //DXライブラリの初期化
+				return -1; //失敗したら-1を返す
+			}
+
 			Trace.WriteLine("DxLib_Init");
 
 			//D3D設定
 			SetUseZBuffer3D(TRUE);//Zバッファを使うように
 			SetWriteZBuffer3D(TRUE);//Zバッファに書き込むように
 			SetDrawScreen(DX_SCREEN_BACK);//バッファリング設定
+
+			CHUNITHM.Initialize();//CHUNITHMの初期化
 
 			return 0;
 		}
