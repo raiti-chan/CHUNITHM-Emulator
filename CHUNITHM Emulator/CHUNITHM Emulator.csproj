@@ -41,7 +41,7 @@
     <Compile Include="src\Chunithm\Enums\GameStates.cs" />
     <Compile Include="src\Chunithm\SystemProperties.cs" />
     <Compile Include="src\Config\MainConfig.cs" />
-    <Compile Include="src\Debug\LogTraceLister.cs" />
+    <Compile Include="src\Logger\LogTraceLister.cs" />
     <Compile Include="src\Renderer\RenderringEngine.cs" />
   </ItemGroup>
   <ItemGroup>

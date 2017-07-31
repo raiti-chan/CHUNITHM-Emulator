@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using CHUNITHM_Emulator.Chunithm;
 using CHUNITHM_Emulator.Config;
-using CHUNITHM_Emulator.Debug;
+using CHUNITHM_Emulator.Logger;
 using static DxLibDLL.DX;
 
 
