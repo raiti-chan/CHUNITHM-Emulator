@@ -25,7 +25,15 @@ namespace CHUNITHM_Emulator.Chunithm {
 		/// </summary>
 		internal RenderringEngine Renderer { private set; get; }
 
+		/// <summary>
+		/// システムのプロパティ
+		/// </summary>
 		internal SystemProperties Properties { private set; get; }
+
+		/// <summary>
+		/// Controller
+		/// </summary>
+		internal Controller Controller { private set; get; }
 
 		#endregion
 
@@ -58,6 +66,7 @@ namespace CHUNITHM_Emulator.Chunithm {
 				Hight = resolution * 9,
 				Width = resolution * 16
 			};
+			this.Controller = new Controller();
 		}
 
 		#endregion
@@ -88,6 +97,8 @@ namespace CHUNITHM_Emulator.Chunithm {
 					this.Properties.FPS = flameCount;
 					calc = flameCount = 0;
 				}
+
+				this.Controller.ControllerStateUpdate();
 
 				this.Renderer.Draw();
 			}
