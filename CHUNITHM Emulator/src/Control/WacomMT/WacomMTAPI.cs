@@ -5,7 +5,7 @@ namespace CHUNITHM_Emulator.Control.WacomMT {
 	/// <summary>
 	/// Wacom feel Multi-touch apiの関数ラッパークラス
 	/// </summary>
-	class WacomMTAPI {
+	internal static class WacomMTAPI {
 		/// <summary>
 		/// DLLの名前
 		/// </summary>
@@ -22,7 +22,7 @@ namespace CHUNITHM_Emulator.Control.WacomMT {
 		/// <param name="libAPIVersion">使用するAPIのバージョン</param>
 		/// <returns><see cref="WacomMTError"/></returns>
 		[DllImport(DllName, CharSet = CharSet.Auto, CallingConvention = CallingConvention.Cdecl, EntryPoint = "WacomMTInitialize")]
-		protected static extern WacomMTError _WacomMTInitialize(Int32 libAPIVersion);
+		private static extern WacomMTError _WacomMTInitialize(Int32 libAPIVersion);
 
 		/// <summary>
 		/// ドライバーへの接続
@@ -46,7 +46,7 @@ namespace CHUNITHM_Emulator.Control.WacomMT {
 		/// <param name="bufferSize">不明</param>
 		/// <returns>システムに接続されているセンサーの数</returns>
 		[DllImport(DllName, CharSet = CharSet.Auto, CallingConvention = CallingConvention.Cdecl, EntryPoint = "WacomMTGetAttachedDeviceIDs")]
-		protected static extern int _WacomMTGetAttachedDeviceIDs(IntPtr deviceArray, UInt32 bufferSize);
+		private static extern int _WacomMTGetAttachedDeviceIDs(IntPtr deviceArray, UInt32 bufferSize);
 
 		/// <summary>
 		/// システムに接続されているマルチタッチセンサーのIDを取得します。
@@ -92,7 +92,7 @@ namespace CHUNITHM_Emulator.Control.WacomMT {
 		/// <param name="capabilityBuffer"></param>
 		/// <returns></returns>
 		[DllImport(DllName, CharSet = CharSet.Auto, CallingConvention = CallingConvention.Cdecl, EntryPoint = "WacomMTGetDeviceCapabilities")]
-		protected static extern WacomMTError _WacomMTGetDeviceCapabilities(int deviceID, IntPtr capabilityBuffer);
+		private static extern WacomMTError _WacomMTGetDeviceCapabilities(int deviceID, IntPtr capabilityBuffer);
 
 		/// <summary>
 		/// 要求されたデバイス識別子のケイパビリティー情報を取得します。

@@ -44,9 +44,11 @@ namespace CHUNITHM_Emulator {
 
 			CHUNITHM.Instance.Run();
 
-			Trace.WriteLine("Exit");
+			Trace.WriteLine("Finalize!");
+			CHUNITHM.Instance.Terminate();
 
 			DxLib_End();
+			Trace.WriteLine("Exit");
 		}
 
 		/// <summary>
@@ -88,6 +90,7 @@ namespace CHUNITHM_Emulator {
 			SetUseZBuffer3D(TRUE);//Zバッファを使うように
 			SetWriteZBuffer3D(TRUE);//Zバッファに書き込むように
 			SetDrawScreen(DX_SCREEN_BACK);//バッファリング設定
+			SetDrawMode(DX_DRAWMODE_BILINEAR);//バイリニア法
 
 			CHUNITHM.Initialize();//CHUNITHMの初期化
 

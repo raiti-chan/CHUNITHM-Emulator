@@ -163,7 +163,7 @@ namespace CHUNITHM_Emulator.Control {
 			var value = this.wacomMTContoroller.ControllerState;
 			this.panelTopCurrent = (short)(this.panelTopCurrent | value.top);
 			this.panelUnderCurrent = (short)(this.panelUnderCurrent | value.under);
-			this.airCurrent = value.airLevel < 0 ? this.AirLevel : value.airLevel;
+			this.airCurrent = value.airLevel < 0 ? this.airCurrent : value.airLevel;
 
 
 			this.panelPush = (short)((~this.panelUnderLast & this.panelUnderCurrent) | (~this.panelTopLast & this.panelTopCurrent)); //パネルが押された状態に切り替わったか取得
@@ -175,6 +175,13 @@ namespace CHUNITHM_Emulator.Control {
 				this.AirState = (this.airCurrent > this.airLast ? AirStates.Action : AirStates.ActionDown);
 			}
 		}
+
+		/// <summary>
+		/// キーが押されたか取得します。
+		/// </summary>
+		/// <param name="key">キー</param>
+		/// <returns>押された(瞬間)場合true</returns>
+		internal bool GetKeyPush(int key) => this.keybordPush[key] != 0;
 
 		#endregion
 

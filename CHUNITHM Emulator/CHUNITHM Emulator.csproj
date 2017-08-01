@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D15087C5-7552-4C39-90E8-5DC89C893B83}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>CHUNITHM_Emulator</RootNamespace>
     <AssemblyName>CHUNITHM Emulator</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="LICENSE" />
@@ -51,6 +54,9 @@
     <Compile Include="src\Control\WacomMT\WacomMTStructures.cs" />
     <Compile Include="src\Logger\LogTraceLister.cs" />
     <Compile Include="src\Renderer\RenderringEngine.cs" />
+    <Compile Include="src\Renderer\Scene\IScene.cs" />
+    <Compile Include="src\Renderer\Scene\StartScene.cs" />
+    <Compile Include="src\Util\DxUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DxLibWDotNet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -68,6 +74,14 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resource\Skin\START_BACKGROUND.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

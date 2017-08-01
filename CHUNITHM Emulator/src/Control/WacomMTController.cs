@@ -55,7 +55,7 @@ namespace CHUNITHM_Emulator.Control {
 				if (!this.isDeviceAvailable) {
 					return (0, 0, -1);
 				}
-				int top = 0, under = 0, airLevel = 0;
+				int top = 0, under = 0, airLevel = -1;
 				lock (this.fingers) {
 					foreach (FingerState finger in this.fingers.Values) {
 						top = (short)top | finger.TopPanels;

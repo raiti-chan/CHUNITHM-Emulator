@@ -1,9 +1,11 @@
 ﻿using System;
-using CHUNITHM_Emulator.Control;
-using CHUNITHM_Emulator.Config;
-using CHUNITHM_Emulator.Renderer;
-using static DxLibDLL.DX;
 using System.Diagnostics;
+using CHUNITHM_Emulator.Chunithm.Enums;
+using CHUNITHM_Emulator.Config;
+using CHUNITHM_Emulator.Control;
+using CHUNITHM_Emulator.Renderer;
+using CHUNITHM_Emulator.Renderer.Scene;
+using static DxLibDLL.DX;
 
 namespace CHUNITHM_Emulator.Chunithm {
 	/// <summary>
@@ -73,6 +75,14 @@ namespace CHUNITHM_Emulator.Chunithm {
 			this.Controller = new Controller();
 		}
 
+		/// <summary>
+		/// ゲームを更新します。
+		/// </summary>
+		/// <param name="flameSec">前回のフレームからの経過時間</param>
+		private void TickUpdate(int flameSec) {
+			this.Properties.GameScene.TickUpdate(flameSec);
+		}
+
 		#endregion
 
 		#region internal Method
@@ -80,6 +90,9 @@ namespace CHUNITHM_Emulator.Chunithm {
 		internal void Run() {
 
 			Trace.WriteLine("Run CHUNITHM.");
+
+			this.Properties.GameState = GameState.Start;//ゲームの状態をスタート画面に
+			this.Properties.GameScene = new StartScene();//スタート画面のシーンを設定
 
 			//内部Tickの初期化
 			this.Properties.NowSystemTick = Environment.TickCount;
@@ -103,9 +116,14 @@ namespace CHUNITHM_Emulator.Chunithm {
 					calc = flameCount = 0;
 				}
 
-				this.Controller.ControllerStateUpdate();
+				this.Controller.ControllerStateUpdate();//コントローラーの状態の更新
+
+				if (this.Controller.GetKeyPush(KEY_INPUT_F3)) {
+					MainConfig.Instance.IsDrawSystemProperties = MainConfig.Instance.IsDrawSystemProperties ? false : true;
+				}
 
 				this.Renderer.Draw();
+				this.Properties.Flames++; //経過フレームを増加
 			}
 
 		}
@@ -116,6 +134,8 @@ namespace CHUNITHM_Emulator.Chunithm {
 		internal void Terminate() {
 			this.Controller.Terminate();
 			this.Controller = null;
+			this.Properties.GameScene.Dispose();
+			MainConfig.Instance.SaveJson();
 		}
 
 		#endregion

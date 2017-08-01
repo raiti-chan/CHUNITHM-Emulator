@@ -22,6 +22,7 @@ namespace CHUNITHM_Emulator.Renderer {
 		/// </summary>
 		internal RenderringEngine() {
 			Trace.WriteLine("Initialize Renderring Engine.");
+			return;
 		}
 
 		/// <summary>
@@ -29,6 +30,8 @@ namespace CHUNITHM_Emulator.Renderer {
 		/// </summary>
 		internal void Draw() {
 			ClearDrawScreen();//クリア
+
+			CHUNITHM.Instance.Properties.GameScene.DrawScene();
 
 			if (MainConfig.Instance.IsDrawSystemProperties) {
 				this.DrawSystemProperty();

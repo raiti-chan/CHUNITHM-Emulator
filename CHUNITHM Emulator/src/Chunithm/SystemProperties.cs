@@ -1,9 +1,28 @@
 ﻿
+using System.Diagnostics;
+using CHUNITHM_Emulator.Chunithm.Enums;
+using CHUNITHM_Emulator.Renderer.Scene;
+
 namespace CHUNITHM_Emulator.Chunithm {
 	/// <summary>
 	/// システムのプロパティ群
 	/// </summary>
 	internal class SystemProperties {
+
+		#region 定数
+
+		/// <summary>
+		/// リソースフォルダへのパス
+		/// </summary>
+		internal const string ResourceLocation = @"Resource\";
+
+		/// <summary>
+		/// スキンフォルダへのパス
+		/// </summary>
+		internal const string SkinLocation = ResourceLocation + @"Skin\";
+
+
+		#endregion
 
 		#region Property
 
@@ -39,7 +58,6 @@ namespace CHUNITHM_Emulator.Chunithm {
 
 		#endregion
 
-
 		#region システム情報
 
 		/// <summary>
@@ -54,6 +72,44 @@ namespace CHUNITHM_Emulator.Chunithm {
 
 		#endregion
 
+		#region ゲーム情報
+
+		/// <summary>
+		/// ゲーム内のトータル経過フレーム
+		/// </summary>
+		internal long Flames = 0;
+
+		/// <summary>
+		/// <see cref="GameState"/>の格納フィールド
+		/// </summary>
+		private GameState _GameState = GameState.Start;
+		/// <summary>
+		/// 現在のゲームの状態
+		/// </summary>
+		internal GameState GameState {
+			set {
+				Trace.WriteLine("ChangeGameState:" + value);
+				this._GameState = value;
+			}
+			get => this._GameState;
+		}
+
+		/// <summary>
+		/// <see cref="GameScene"/>の格納フィールド
+		/// </summary>
+		private IScene _GameScene = null;
+		/// <summary>
+		/// ゲームのシーンオブジェクト
+		/// </summary>
+		internal IScene GameScene {
+			set {
+				Trace.WriteLine("Scene Set:" + value.ToString());
+				this._GameScene = value;
+			}
+			get => this._GameScene;
+		}
+
+		#endregion
 		#endregion
 
 	}
