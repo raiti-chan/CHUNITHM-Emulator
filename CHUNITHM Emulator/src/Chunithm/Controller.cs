@@ -35,14 +35,24 @@ namespace CHUNITHM_Emulator.Chunithm {
 		private byte[] keybordPush = new byte[256];
 
 		/// <summary>
-		/// 現在のパネルの状態
+		/// 現在のパネル下部の状態
 		/// </summary>
-		private short panelCurrent = 0;
+		private short panelUnderCurrent = 0;
 
 		/// <summary>
-		/// 過去のパネルの状態
+		/// 現在のパネル上部の状態
 		/// </summary>
-		private short panelLast = 0;
+		private short panelTopCurrent = 0;
+
+		/// <summary>
+		/// 過去のパネル下部の状態
+		/// </summary>
+		private short panelUnderLast = 0;
+
+		/// <summary>
+		/// 現在のパネル上部の状態
+		/// </summary>
+		private short panelTopLast = 0;
 
 		/// <summary>
 		/// パネルの状態が切り替わったか
@@ -61,7 +71,7 @@ namespace CHUNITHM_Emulator.Chunithm {
 		/// <summary>
 		/// パネルのホールド状態を表します。
 		/// </summary>
-		internal short PanelHoldState { get => this.panelLast; }
+		internal short PanelHoldState { get => (short)(this.panelUnderLast | this.panelTopCurrent); }
 
 		#endregion
 
@@ -78,18 +88,21 @@ namespace CHUNITHM_Emulator.Chunithm {
 			GetHitKeyStateAll(this.keybordCurrent); //キーの状態を取得
 
 			for (int i = 0; i < 256; i++) {
-				this.keybordPush[i] = (byte)(~this.keybordLast[i] & this.keybordCurrent[i]);
+				this.keybordPush[i] = (byte)(~this.keybordLast[i] & this.keybordCurrent[i]);//押された状態に切り替わったキーを取得
 			}
 
-			this.panelLast = this.panelCurrent; //過去のバッファに現在の状態をコピー
-			this.panelCurrent = 0;//現在の状態を0に
+			this.panelUnderLast = this.panelUnderCurrent; //過去のバッファに現在の状態をコピー
+			this.panelTopLast = this.panelTopCurrent;
+
+			this.panelUnderCurrent = this.panelTopCurrent = 0; //現在の状態を0に
 			for (int i = 0; i < 16; i++) {
-				this.panelCurrent = (short)(this.panelCurrent | ((short)(this.keybordCurrent[UnderKeys[i]] << i)));
+				this.panelUnderCurrent = (short)(this.panelUnderCurrent | ((short)(this.keybordCurrent[UnderKeys[i]] << i))); //パネル下部の状態を取得
+				this.panelTopCurrent = (short)(this.panelTopCurrent | ((short)(this.keybordCurrent[TopKeys[i]] << i))); //パネル上部の状態を取得
 			}
 
 			// TODO: タブレットの処理
 
-			this.panelPush = (short)(~this.panelLast & this.panelCurrent);
+			this.panelPush = (short)((~this.panelUnderLast & this.panelUnderCurrent) | (~this.panelTopLast & this.panelTopCurrent));
 
 		}
 
