@@ -1,4 +1,5 @@
-﻿using static DxLibDLL.DX;
+﻿using System.Diagnostics;
+using static DxLibDLL.DX;
 
 namespace CHUNITHM_Emulator.Control {
 	internal class Controller {
@@ -18,6 +19,11 @@ namespace CHUNITHM_Emulator.Control {
 		#endregion
 
 		#region Private property
+
+		/// <summary>
+		/// ワコムタブレットのコントローラー
+		/// </summary>
+		private WacomMTController wacomMTContoroller;
 
 		/// <summary>
 		/// 現在のキーボードの状態
@@ -95,7 +101,24 @@ namespace CHUNITHM_Emulator.Control {
 
 		#endregion
 
+		#region Internal Method
 
+		/// <summary>
+		/// コンストラクタ
+		/// </summary>
+		internal Controller() {
+			Trace.WriteLine("Initialize Controller.");
+			this.wacomMTContoroller = new WacomMTController();
+			this.wacomMTContoroller.Initialize();
+		}
+
+		/// <summary>
+		/// 終了処理
+		/// </summary>
+		internal void Terminate() {
+			this.wacomMTContoroller.Terminate();
+			this.wacomMTContoroller = null;
+		}
 
 		/// <summary>
 		/// Controllerの状態を更新します
@@ -118,14 +141,15 @@ namespace CHUNITHM_Emulator.Control {
 				this.panelUnderCurrent = (short)(this.panelUnderCurrent | ((short)(this.keybordCurrent[UnderKeys[i]] << i))); //パネル下部の状態を取得
 				this.panelTopCurrent = (short)(this.panelTopCurrent | ((short)(this.keybordCurrent[TopKeys[i]] << i))); //パネル上部の状態を取得
 			}
-			
+
 			#endregion
-			
+
 			#region Airの処理
 			this.airLast = this.airCurrent; //過去バッファに現在の状態をコピー
 			if (this.keybordCurrent[KEY_INPUT_SPACE] > 0) { //スペースの状態チェック
 				this.airCurrent += (this.airCurrent < 50 ? 5 : 0); //押されていてなおかつAirレベルが100未満だったらAirレベルを10上げる
-			} else if(this.airCurrent > 0){
+			} 
+			else if (this.airCurrent > 0) {
 				this.airCurrent -= 5; //押されていなくなおかつAirレベルが0以上だったらAirレベルを10下げる
 			}
 			if (this.airCurrent > 100) {
@@ -135,7 +159,11 @@ namespace CHUNITHM_Emulator.Control {
 				this.airCurrent = 0; //Airレベルが0より小さかったら0にする
 			}
 			#endregion
-			// TODO: タブレットの処理
+			
+			var value = this.wacomMTContoroller.ControllerState;
+			this.panelTopCurrent = (short)(this.panelTopCurrent | value.top);
+			this.panelUnderCurrent = (short)(this.panelUnderCurrent | value.under);
+			this.airCurrent = value.airLevel < 0 ? this.AirLevel : value.airLevel;
 
 
 			this.panelPush = (short)((~this.panelUnderLast & this.panelUnderCurrent) | (~this.panelTopLast & this.panelTopCurrent)); //パネルが押された状態に切り替わったか取得
@@ -148,6 +176,7 @@ namespace CHUNITHM_Emulator.Control {
 			}
 		}
 
+		#endregion
 
 
 		/// <summary>

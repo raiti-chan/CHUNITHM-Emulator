@@ -34,14 +34,17 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="LICENSE" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\Chunithm\CHUNITHM.cs" />
     <Compile Include="src\ChunithmEmuMain.cs" />
+    <Compile Include="src\Config\AirMode.cs" />
     <Compile Include="src\Control\Controller.cs" />
     <Compile Include="src\Chunithm\Enums\GameStates.cs" />
     <Compile Include="src\Chunithm\SystemProperties.cs" />
     <Compile Include="src\Config\MainConfig.cs" />
+    <Compile Include="src\Control\WacomMTController.cs" />
     <Compile Include="src\Control\WacomMT\WacomMTAPI.cs" />
     <Compile Include="src\Control\WacomMT\WacomMTDelegates.cs" />
     <Compile Include="src\Control\WacomMT\WacomMTEnums.cs" />
@@ -57,6 +60,9 @@
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0-preview2-25405-01\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>

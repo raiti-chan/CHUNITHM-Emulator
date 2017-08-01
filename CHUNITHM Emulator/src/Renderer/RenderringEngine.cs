@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using CHUNITHM_Emulator.Chunithm;
 using CHUNITHM_Emulator.Config;
 using static DxLibDLL.DX;
@@ -20,7 +21,7 @@ namespace CHUNITHM_Emulator.Renderer {
 		/// コンストラクタ
 		/// </summary>
 		internal RenderringEngine() {
-
+			Trace.WriteLine("Initialize Renderring Engine.");
 		}
 
 		/// <summary>

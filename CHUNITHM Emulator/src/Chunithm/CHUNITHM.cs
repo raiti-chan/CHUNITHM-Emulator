@@ -3,6 +3,7 @@ using CHUNITHM_Emulator.Control;
 using CHUNITHM_Emulator.Config;
 using CHUNITHM_Emulator.Renderer;
 using static DxLibDLL.DX;
+using System.Diagnostics;
 
 namespace CHUNITHM_Emulator.Chunithm {
 	/// <summary>
@@ -44,6 +45,8 @@ namespace CHUNITHM_Emulator.Chunithm {
 		/// クラスの初期化
 		/// </summary>
 		internal static void Initialize() {
+			Trace.WriteLine("Init Chunithm.");
+
 			if (Instance != null) {
 				return; //既に初期化されていたら処理しない
 			}
@@ -76,6 +79,7 @@ namespace CHUNITHM_Emulator.Chunithm {
 
 		internal void Run() {
 
+			Trace.WriteLine("Run CHUNITHM.");
 
 			//内部Tickの初期化
 			this.Properties.NowSystemTick = Environment.TickCount;
@@ -106,6 +110,13 @@ namespace CHUNITHM_Emulator.Chunithm {
 
 		}
 
+		/// <summary>
+		/// 終了処理
+		/// </summary>
+		internal void Terminate() {
+			this.Controller.Terminate();
+			this.Controller = null;
+		}
 
 		#endregion
 

@@ -116,6 +116,22 @@ namespace CHUNITHM_Emulator.Config {
 
 		#endregion
 
+		#region 操作
+
+		/// <summary>
+		/// オート
+		/// </summary>
+		[DataMember]
+		internal bool IsAuto { get; set; } = false;
+
+		/// <summary>
+		/// Airのオート設定
+		/// </summary>
+		[DataMember]
+		internal AirMode AirMode { get; set; } = AirMode.Manual;
+
+		#endregion
+
 		#region デバッグ
 
 		/// <summary>

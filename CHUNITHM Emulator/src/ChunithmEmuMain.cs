@@ -45,6 +45,7 @@ namespace CHUNITHM_Emulator {
 			CHUNITHM.Instance.Run();
 
 			Trace.WriteLine("Exit");
+
 			DxLib_End();
 		}
 
@@ -81,7 +82,7 @@ namespace CHUNITHM_Emulator {
 				return -1; //失敗したら-1を返す
 			}
 
-			Trace.WriteLine("DxLib_Init");
+			Trace.WriteLine("DxLib_Init.");
 
 			//D3D設定
 			SetUseZBuffer3D(TRUE);//Zバッファを使うように

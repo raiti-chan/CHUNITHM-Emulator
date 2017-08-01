@@ -1,8 +1,10 @@
-﻿
-using System;
+﻿using System;
 using System.Runtime.InteropServices;
 
 namespace CHUNITHM_Emulator.Control.WacomMT {
+	/// <summary>
+	/// Wacom feel Multi-touch apiの関数ラッパークラス
+	/// </summary>
 	class WacomMTAPI {
 		/// <summary>
 		/// DLLの名前
@@ -26,9 +28,7 @@ namespace CHUNITHM_Emulator.Control.WacomMT {
 		/// ドライバーへの接続
 		/// </summary>
 		/// <returns><see cref="WacomMTError"/></returns>
-		public static WacomMTError WacomMTInitialize() {
-			return _WacomMTInitialize(WACOM_MULTI_TOUCH_API_VERSION);
-		}
+		public static WacomMTError WacomMTInitialize() => _WacomMTInitialize(WACOM_MULTI_TOUCH_API_VERSION);
 
 
 		/// <summary>
