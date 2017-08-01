@@ -1,4 +1,5 @@
 ﻿using System;
+using CHUNITHM_Emulator.Chunithm.Control;
 using CHUNITHM_Emulator.Config;
 using CHUNITHM_Emulator.Renderer;
 using static DxLibDLL.DX;

@@ -38,7 +38,7 @@
   <ItemGroup>
     <Compile Include="src\Chunithm\CHUNITHM.cs" />
     <Compile Include="src\ChunithmEmuMain.cs" />
-    <Compile Include="src\Chunithm\Controller.cs" />
+    <Compile Include="src\Control\Controller.cs" />
     <Compile Include="src\Chunithm\Enums\GameStates.cs" />
     <Compile Include="src\Chunithm\SystemProperties.cs" />
     <Compile Include="src\Config\MainConfig.cs" />
