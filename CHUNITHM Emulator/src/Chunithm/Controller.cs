@@ -59,6 +59,16 @@ namespace CHUNITHM_Emulator.Chunithm {
 		/// </summary>
 		private short panelPush = 0;
 
+		/// <summary>
+		/// 現在のAirのレベル
+		/// </summary>
+		private int airCurrent = 0;
+
+		/// <summary>
+		/// 過去のAirのレベル
+		/// </summary>
+		private int airLast = 0;
+
 		#endregion
 
 		#region Internal property
@@ -73,12 +83,19 @@ namespace CHUNITHM_Emulator.Chunithm {
 		/// </summary>
 		internal short PanelHoldState { get => (short)(this.panelUnderLast | this.panelTopCurrent); }
 
-		#endregion
-
 		/// <summary>
 		/// Air判定の状態を表します。
 		/// </summary>
 		internal AirStates AirState { private set; get; } = 0;
+
+		/// <summary>
+		/// Airの高さ0~100を表します。
+		/// </summary>
+		internal int AirLevel { get => this.airLast; }
+
+		#endregion
+
+
 
 		/// <summary>
 		/// Controllerの状態を更新します
@@ -91,6 +108,8 @@ namespace CHUNITHM_Emulator.Chunithm {
 				this.keybordPush[i] = (byte)(~this.keybordLast[i] & this.keybordCurrent[i]);//押された状態に切り替わったキーを取得
 			}
 
+			#region パネルの処理
+
 			this.panelUnderLast = this.panelUnderCurrent; //過去のバッファに現在の状態をコピー
 			this.panelTopLast = this.panelTopCurrent;
 
@@ -99,11 +118,34 @@ namespace CHUNITHM_Emulator.Chunithm {
 				this.panelUnderCurrent = (short)(this.panelUnderCurrent | ((short)(this.keybordCurrent[UnderKeys[i]] << i))); //パネル下部の状態を取得
 				this.panelTopCurrent = (short)(this.panelTopCurrent | ((short)(this.keybordCurrent[TopKeys[i]] << i))); //パネル上部の状態を取得
 			}
-
+			
+			#endregion
+			
+			#region Airの処理
+			this.airLast = this.airCurrent; //過去バッファに現在の状態をコピー
+			if (this.keybordCurrent[KEY_INPUT_SPACE] > 0) { //スペースの状態チェック
+				this.airCurrent += (this.airCurrent < 50 ? 5 : 0); //押されていてなおかつAirレベルが100未満だったらAirレベルを10上げる
+			} else if(this.airCurrent > 0){
+				this.airCurrent -= 5; //押されていなくなおかつAirレベルが0以上だったらAirレベルを10下げる
+			}
+			if (this.airCurrent > 100) {
+				this.airCurrent = 100; //Airレベルが100を超えていたら100にする
+			}
+			if (this.airCurrent < 0) {
+				this.airCurrent = 0; //Airレベルが0より小さかったら0にする
+			}
+			#endregion
 			// TODO: タブレットの処理
 
-			this.panelPush = (short)((~this.panelUnderLast & this.panelUnderCurrent) | (~this.panelTopLast & this.panelTopCurrent));
 
+			this.panelPush = (short)((~this.panelUnderLast & this.panelUnderCurrent) | (~this.panelTopLast & this.panelTopCurrent)); //パネルが押された状態に切り替わったか取得
+			this.AirState = AirStates.Low;
+			if (this.airCurrent > 0) {
+				this.AirState = AirStates.High;
+			}
+			if (this.airCurrent != this.airLast) {
+				this.AirState = (this.airCurrent > this.airLast ? AirStates.Action : AirStates.ActionDown);
+			}
 		}
 
 
@@ -123,7 +165,11 @@ namespace CHUNITHM_Emulator.Chunithm {
 			/// <summary>
 			/// AirAction判定
 			/// </summary>
-			Action
+			Action,
+			/// <summary>
+			/// AirActionDown判定
+			/// </summary>
+			ActionDown
 		}
 
 	}

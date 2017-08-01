@@ -46,7 +46,7 @@ namespace CHUNITHM_Emulator.Renderer {
 			#region 左側
 			DrawString(0, 0, "CHUNITHM Emulator " + ChunithmEmuMain.VERSION, SystemPropertyColor);
 			DrawString(0, 15, "FPS : " + CHUNITHM.Instance.Properties.FPS.ToString(), SystemPropertyColor);
-			{ 
+			{
 				char[] chars = Convert.ToString(CHUNITHM.Instance.Controller.PanelState, 2).ToCharArray();
 				Array.Reverse(chars);
 				string text = new string(chars);
@@ -71,6 +71,7 @@ namespace CHUNITHM_Emulator.Renderer {
 				}
 				DrawString(0, 45, "PanelHoldState:" + text2, SystemPropertyColor);
 			}
+			DrawString(0, 60, "AirLevel:" + CHUNITHM.Instance.Controller.AirLevel.ToString("000") + " AirState:" + CHUNITHM.Instance.Controller.AirState, SystemPropertyColor);
 			#endregion
 			#region 右側
 			{
