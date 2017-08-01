@@ -1,6 +1,6 @@
 ﻿using static DxLibDLL.DX;
 
-namespace CHUNITHM_Emulator.Chunithm.Control {
+namespace CHUNITHM_Emulator.Control {
 	internal class Controller {
 
 		#region Internal static property

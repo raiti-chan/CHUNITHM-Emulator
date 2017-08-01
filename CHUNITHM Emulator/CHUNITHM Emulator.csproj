@@ -42,6 +42,10 @@
     <Compile Include="src\Chunithm\Enums\GameStates.cs" />
     <Compile Include="src\Chunithm\SystemProperties.cs" />
     <Compile Include="src\Config\MainConfig.cs" />
+    <Compile Include="src\Control\WacomMT\WacomMTAPI.cs" />
+    <Compile Include="src\Control\WacomMT\WacomMTDelegates.cs" />
+    <Compile Include="src\Control\WacomMT\WacomMTEnums.cs" />
+    <Compile Include="src\Control\WacomMT\WacomMTStructures.cs" />
     <Compile Include="src\Logger\LogTraceLister.cs" />
     <Compile Include="src\Renderer\RenderringEngine.cs" />
   </ItemGroup>
