@@ -1,5 +1,7 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using CHUNITHM_Emulator.Chunithm;
+using CHUNITHM_Emulator.Renderer.Object;
 using static CHUNITHM_Emulator.Util.DxUtils;
 using static DxLibDLL.DX;
 
@@ -9,12 +11,63 @@ namespace CHUNITHM_Emulator.Renderer.Scene {
 	/// </summary>
 	internal class StartScene : IScene {
 
+		#region const
+
+		/// <summary>
+		/// スタート画面の背景画像
+		/// </summary>
 		private const string BackGroundSkin = SystemProperties.SkinLocation + @"START_BACKGROUND.png";
 
-		private readonly int backGroundSkinHandle;
+		/// <summary>
+		/// スタート画面のオーバーレイ画像
+		/// </summary>
+		private const string OverSkin = SystemProperties.SkinLocation + @"START_OVER.png";
 
+		/// <summary>
+		/// スタート画面の海
+		/// </summary>
+		private const string Sea = SystemProperties.SkinLocation + @"START_SEA_";
+
+		#endregion
+
+		private int flame = 0;
+
+		/// <summary>
+		/// テクスチャのハンドル
+		/// </summary>
+		private readonly int[] textureHandls = new int[4];
+
+		/// <summary>
+		/// 海0の描画オブジェクト
+		/// </summary>
+		private readonly Square[] seaRenderer = new Square[2];
+
+
+
+		/// <summary>
+		/// コンストラクタ
+		/// </summary>
 		internal StartScene() {
-			this.backGroundSkinHandle = LoadGraph(BackGroundSkin);
+			this.textureHandls[0] = LoadGraph(BackGroundSkin);
+			this.textureHandls[1] = LoadGraph(OverSkin);
+			this.textureHandls[2] = LoadGraph(Sea + "0.png");
+			this.textureHandls[3] = LoadGraph(Sea + "1.png");
+
+			int width = CHUNITHM.Instance.Properties.Width;
+			int hight = CHUNITHM.Instance.Properties.Hight;
+
+			this.seaRenderer[0] = new Square(-width, -hight / 2, 0.0F, width * 3, hight * 2, this.textureHandls[2], true);
+			this.seaRenderer[0].RotationX(GetRadian(75));
+			this.seaRenderer[0].Reflect();
+
+			this.seaRenderer[1] = new Square(-width, 0.0F, 0.0F, width * 3, hight * 3, this.textureHandls[3], true);
+			this.seaRenderer[1].SetTexturePositions(0.0F, 0.0F, 3.0F, 0.0F, 0.0F, 3.0F, 3.0F, 3.0F);
+			this.seaRenderer[1].RotationX(GetRadian(75.0F));
+
+			SetFogEnable(TRUE);
+			SetFogColor(255, 255, 255);
+			SetFogStartEnd(1000, 2000);
+
 			return;
 		}
 
@@ -22,8 +75,7 @@ namespace CHUNITHM_Emulator.Renderer.Scene {
 		/// Tick処理
 		/// </summary>
 		/// <param name="flameSec">前回のフレームからの経過時間</param>
-		public void TickUpdate(int flameSec) {
-		}
+		public void TickUpdate(int flameSec) => this.flame++;
 
 		/// <summary>
 		/// 描画
@@ -32,8 +84,26 @@ namespace CHUNITHM_Emulator.Renderer.Scene {
 
 			int width = CHUNITHM.Instance.Properties.Width;
 			int hight = CHUNITHM.Instance.Properties.Hight;
-			DrawModiGraph(0, 0, width, 0, width, hight, 0, hight, this.backGroundSkinHandle, FALSE);
-			//DrawLine3D(new VECTOR { x = 100, y = 100, z = -100}, new VECTOR { x = 500, y = 500, z = 0 }, (uint)Color.White.ToArgb());
+			DrawModiGraph(0, 0, width, 0, width, hight, 0, hight, this.textureHandls[0], FALSE);
+
+			SetUseLighting(FALSE);
+
+
+			SetDrawArea(0, hight / 20 * 11, width, hight);
+			this.seaRenderer[0].Draw();
+			SetTextureAddressModeUV(DX_TEXADDRESS_WRAP, DX_TEXADDRESS_WRAP);
+			this.seaRenderer[1].TranslateBefore(0.0F, -0.5F, 0.0F);
+			if (this.flame % (hight * 2) == 0) {
+				this.seaRenderer[1].TranslateBefore(0.0F, hight, 0.0F);
+			}
+			this.seaRenderer[1].Draw();
+
+			SetTextureAddressModeUV(DX_TEXADDRESS_CLAMP, DX_TEXADDRESS_CLAMP);
+			SetDrawAreaFull();
+
+			SetUseLighting(TRUE);
+
+			DrawModiGraph(0, 0, width, 0, width, hight, 0, hight, this.textureHandls[1], TRUE);
 
 		}
 
@@ -41,7 +111,10 @@ namespace CHUNITHM_Emulator.Renderer.Scene {
 		/// シーンのリソースを破棄
 		/// </summary>
 		public void Dispose() {
-			DeleteGraph(this.backGroundSkinHandle);
+			foreach (int handle in this.textureHandls) {
+				DeleteGraph(handle);
+			}
+			SetFogEnable(FALSE);
 			return;
 		}
 

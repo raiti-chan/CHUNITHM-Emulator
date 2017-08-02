@@ -53,6 +53,9 @@
     <Compile Include="src\Control\WacomMT\WacomMTEnums.cs" />
     <Compile Include="src\Control\WacomMT\WacomMTStructures.cs" />
     <Compile Include="src\Logger\LogTraceLister.cs" />
+    <Compile Include="src\Renderer\Object\IRendererObject.cs" />
+    <Compile Include="src\Renderer\Object\RendererObjectBace.cs" />
+    <Compile Include="src\Renderer\Object\Square.cs" />
     <Compile Include="src\Renderer\RenderringEngine.cs" />
     <Compile Include="src\Renderer\Scene\IScene.cs" />
     <Compile Include="src\Renderer\Scene\StartScene.cs" />
@@ -76,12 +79,17 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resource\Skin\START_BACKGROUND.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Resource\Skin\START_BACKGROUND.png" />
+    <Content Include="Resource\Skin\START_OVER.png" />
+    <Content Include="Resource\Skin\START_SEA_0.png" />
+    <Content Include="Resource\Skin\START_SEA_1.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>cd "$(ProjectDir)"
+xcopy "Resource" "$(TargetDir)Resource" /D/E/C/I/H/Y</PostBuildEvent>
+  </PropertyGroup>
 </Project>

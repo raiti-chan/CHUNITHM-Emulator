@@ -81,6 +81,7 @@ namespace CHUNITHM_Emulator.Chunithm {
 		/// <param name="flameSec">前回のフレームからの経過時間</param>
 		private void TickUpdate(int flameSec) {
 			this.Properties.GameScene.TickUpdate(flameSec);
+			return;
 		}
 
 		#endregion
@@ -121,7 +122,7 @@ namespace CHUNITHM_Emulator.Chunithm {
 				if (this.Controller.GetKeyPush(KEY_INPUT_F3)) {
 					MainConfig.Instance.IsDrawSystemProperties = MainConfig.Instance.IsDrawSystemProperties ? false : true;
 				}
-
+				this.TickUpdate(delta);
 				this.Renderer.Draw();
 				this.Properties.Flames++; //経過フレームを増加
 			}
