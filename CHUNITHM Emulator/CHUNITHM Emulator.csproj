@@ -64,7 +64,7 @@
   <ItemGroup>
     <Reference Include="DxLibWDotNet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Release\DxLibWDotNet.dll</HintPath>
+      <HintPath>libs\DxLibWDotNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
@@ -79,6 +79,9 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="libs\DxLibW.dll" />
+    <Content Include="libs\DxLibWDotNet.dll" />
+    <Content Include="libs\DxLibW_x64.dll" />
     <Content Include="Resource\Skin\START_BACKGROUND.png" />
     <Content Include="Resource\Skin\START_OVER.png" />
     <Content Include="Resource\Skin\START_SEA_0.png" />
@@ -90,6 +93,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>cd "$(ProjectDir)"
-xcopy "Resource" "$(TargetDir)Resource" /D/E/C/I/H/Y</PostBuildEvent>
+xcopy "Resource" "$(TargetDir)Resource" /D/E/C/I/H/Y
+copy "libs\*.dll" "$(TargetDir)" /Y</PostBuildEvent>
   </PropertyGroup>
 </Project>
