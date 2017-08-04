@@ -211,16 +211,16 @@ namespace CHUNITHM_Emulator.Control.WacomMT {
 		/// <param name="structPointer"></param>
 		public WacomMTFingerCollectionClass(IntPtr structPointer) {
 			WacomMTFingerCollection collection = (WacomMTFingerCollection)Marshal.PtrToStructure(structPointer, typeof(WacomMTFingerCollection));//メモリのポインタの位置から構造体を取得
-			Version = collection.Version;
-			DeviceID = collection.DeviceID;
-			FrameNumber = collection.FrameNumber;
-			FingerCount = collection.FingerCount;
+			this.Version = collection.Version;
+			this.DeviceID = collection.DeviceID;
+			this.FrameNumber = collection.FrameNumber;
+			this.FingerCount = collection.FingerCount;
 
 			WacomMTFinger[] fingers = new WacomMTFinger[FingerCount];//長さがFingerCountの配列作成
 			IntPtr nowPtr = collection.FingerData;//ポインタを複製
-			for (int i = 0; i < FingerCount; i++) {
+			for (int i = 0; i < this.FingerCount; i++) {
 				fingers[i] = (WacomMTFinger)Marshal.PtrToStructure(nowPtr, typeof(WacomMTFinger));
-				nowPtr = (IntPtr)((int)nowPtr + Marshal.SizeOf(typeof(WacomMTFinger)));
+				nowPtr = (IntPtr)((long)nowPtr + Marshal.SizeOf(typeof(WacomMTFinger)));
 			}
 
 			FingerData = fingers;

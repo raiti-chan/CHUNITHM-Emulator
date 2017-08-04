@@ -69,7 +69,7 @@ namespace CHUNITHM_Emulator.Control.WacomMT {
 
 					for (int i = 0; i < (uint)res; i++) {//値を取得
 						ids[i] = (int)Marshal.PtrToStructure(nowPtr, typeof(int));//メモリからintのデータを取得する。
-						nowPtr = (IntPtr)((int)nowPtr + sizeof(int));//ポインターを1データ分ずらす。
+						nowPtr = (IntPtr)((long)nowPtr + sizeof(int));//ポインターを1データ分ずらす。
 					}
 				} catch (Exception e) {
 					throw e;

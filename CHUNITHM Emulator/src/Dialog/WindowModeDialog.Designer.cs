@@ -36,54 +36,60 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(13, 13);
+			this.label1.Location = new System.Drawing.Point(8, 9);
+			this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(568, 36);
+			this.label1.Size = new System.Drawing.Size(381, 24);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "解像度の設定\r\n(フルスクリーンが有効でない場合は解像度がそのままウィンドウサイズになります。)";
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(157, 55);
+			this.label2.Location = new System.Drawing.Point(94, 37);
+			this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(26, 18);
+			this.label2.Size = new System.Drawing.Size(17, 12);
 			this.label2.TabIndex = 2;
 			this.label2.Text = "×";
 			// 
-			// Hight
+			// HightL
 			// 
 			this.HightL.AutoSize = true;
-			this.HightL.Location = new System.Drawing.Point(189, 55);
-			this.HightL.Name = "Hight";
-			this.HightL.Size = new System.Drawing.Size(52, 18);
+			this.HightL.Location = new System.Drawing.Point(113, 37);
+			this.HightL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.HightL.Name = "HightL";
+			this.HightL.Size = new System.Drawing.Size(35, 12);
 			this.HightL.TabIndex = 3;
 			this.HightL.Text = "label3";
 			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(13, 80);
+			this.label3.Location = new System.Drawing.Point(36, 57);
+			this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(85, 18);
+			this.label3.Size = new System.Drawing.Size(57, 12);
 			this.label3.TabIndex = 4;
 			this.label3.Text = "(16:9固定)";
 			// 
-			// Width
+			// WidthTB
 			// 
-			this.WidthTB.Location = new System.Drawing.Point(16, 52);
+			this.WidthTB.Location = new System.Drawing.Point(10, 35);
+			this.WidthTB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.WidthTB.Mask = "9999";
-			this.WidthTB.Name = "Width";
-			this.WidthTB.Size = new System.Drawing.Size(135, 25);
+			this.WidthTB.Name = "WidthTB";
+			this.WidthTB.Size = new System.Drawing.Size(83, 19);
 			this.WidthTB.TabIndex = 5;
 			this.WidthTB.TextChanged += new System.EventHandler(this.Width_TextChanged);
 			// 
-			// IsFullScreen
+			// IsFullScreenCB
 			// 
 			this.IsFullScreenCB.AutoSize = true;
-			this.IsFullScreenCB.Location = new System.Drawing.Point(16, 134);
-			this.IsFullScreenCB.Name = "IsFullScreen";
-			this.IsFullScreenCB.Size = new System.Drawing.Size(211, 22);
+			this.IsFullScreenCB.Location = new System.Drawing.Point(10, 89);
+			this.IsFullScreenCB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.IsFullScreenCB.Name = "IsFullScreenCB";
+			this.IsFullScreenCB.Size = new System.Drawing.Size(141, 16);
 			this.IsFullScreenCB.TabIndex = 6;
 			this.IsFullScreenCB.Text = "フルスクリーンモードにする";
 			this.IsFullScreenCB.UseVisualStyleBackColor = true;
@@ -91,9 +97,10 @@
 			// Ok
 			// 
 			this.Ok.AutoSize = true;
-			this.Ok.Location = new System.Drawing.Point(480, 190);
+			this.Ok.Location = new System.Drawing.Point(288, 127);
+			this.Ok.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.Ok.Name = "Ok";
-			this.Ok.Size = new System.Drawing.Size(75, 28);
+			this.Ok.Size = new System.Drawing.Size(45, 22);
 			this.Ok.TabIndex = 7;
 			this.Ok.Text = "決定";
 			this.Ok.UseVisualStyleBackColor = true;
@@ -102,9 +109,10 @@
 			// Cancel
 			// 
 			this.Cancel.AutoSize = true;
-			this.Cancel.Location = new System.Drawing.Point(561, 190);
+			this.Cancel.Location = new System.Drawing.Point(337, 127);
+			this.Cancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.Cancel.Name = "Cancel";
-			this.Cancel.Size = new System.Drawing.Size(88, 28);
+			this.Cancel.Size = new System.Drawing.Size(62, 22);
 			this.Cancel.TabIndex = 8;
 			this.Cancel.Text = "キャンセル";
 			this.Cancel.UseVisualStyleBackColor = true;
@@ -112,9 +120,9 @@
 			// 
 			// WindowModeDialog
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(661, 230);
+			this.ClientSize = new System.Drawing.Size(400, 165);
 			this.ControlBox = false;
 			this.Controls.Add(this.Cancel);
 			this.Controls.Add(this.Ok);
@@ -124,10 +132,11 @@
 			this.Controls.Add(this.HightL);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
+			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.MaximizeBox = false;
-			this.MaximumSize = new System.Drawing.Size(683, 286);
+			this.MaximumSize = new System.Drawing.Size(416, 204);
 			this.MinimizeBox = false;
-			this.MinimumSize = new System.Drawing.Size(683, 286);
+			this.MinimumSize = new System.Drawing.Size(416, 204);
 			this.Name = "WindowModeDialog";
 			this.ShowIcon = false;
 			this.ShowInTaskbar = false;

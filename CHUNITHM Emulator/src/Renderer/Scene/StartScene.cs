@@ -35,12 +35,12 @@ namespace CHUNITHM_Emulator.Renderer.Scene {
 		/// <summary>
 		/// テクスチャのハンドル
 		/// </summary>
-		private readonly int[] textureHandls = new int[4];
+		private readonly int[] textureHandls = new int[5];
 
 		/// <summary>
 		/// 海0の描画オブジェクト
 		/// </summary>
-		private readonly Square[] seaRenderer = new Square[2];
+		private readonly Square[] seaRenderer = new Square[3];
 
 
 
@@ -52,6 +52,7 @@ namespace CHUNITHM_Emulator.Renderer.Scene {
 			this.textureHandls[1] = LoadGraph(OverSkin);
 			this.textureHandls[2] = LoadGraph(Sea + "0.png");
 			this.textureHandls[3] = LoadGraph(Sea + "1.png");
+			this.textureHandls[4] = LoadGraph(Sea + "2.png");
 
 			int width = CHUNITHM.Instance.Properties.Width;
 			int hight = CHUNITHM.Instance.Properties.Hight;
@@ -63,6 +64,10 @@ namespace CHUNITHM_Emulator.Renderer.Scene {
 			this.seaRenderer[1] = new Square(-width, 0.0F, 0.0F, width * 3, hight * 3, this.textureHandls[3], true);
 			this.seaRenderer[1].SetTexturePositions(0.0F, 0.0F, 3.0F, 0.0F, 0.0F, 3.0F, 3.0F, 3.0F);
 			this.seaRenderer[1].RotationX(GetRadian(75.0F));
+
+			this.seaRenderer[2] = new Square(-width, 0.0F, 0.0F, width * 3, hight * 3, Color.FromArgb(100,255,255,255), this.textureHandls[4], true);
+			this.seaRenderer[2].SetTexturePositions(0.0F, 0.0F, 3.0F, 0.0F, 0.0F, 3.0F, 3.0F, 3.0F);
+			this.seaRenderer[2].RotationX(GetRadian(75.0F));
 
 			SetFogEnable(TRUE);
 			SetFogColor(255, 255, 255);
@@ -93,10 +98,13 @@ namespace CHUNITHM_Emulator.Renderer.Scene {
 			this.seaRenderer[0].Draw();
 			SetTextureAddressModeUV(DX_TEXADDRESS_WRAP, DX_TEXADDRESS_WRAP);
 			this.seaRenderer[1].TranslateBefore(0.0F, -0.5F, 0.0F);
+			this.seaRenderer[2].TranslateBefore(0.0F, -0.5F, 0.0F);
 			if (this.flame % (hight * 2) == 0) {
 				this.seaRenderer[1].TranslateBefore(0.0F, hight, 0.0F);
+				this.seaRenderer[2].TranslateBefore(0.0F, hight, 0.0F);
 			}
 			this.seaRenderer[1].Draw();
+			this.seaRenderer[2].Draw();
 
 			SetTextureAddressModeUV(DX_TEXADDRESS_CLAMP, DX_TEXADDRESS_CLAMP);
 			SetDrawAreaFull();
