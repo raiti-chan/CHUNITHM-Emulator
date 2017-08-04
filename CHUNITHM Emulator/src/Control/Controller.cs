@@ -183,6 +183,13 @@ namespace CHUNITHM_Emulator.Control {
 		/// <returns>押された(瞬間)場合true</returns>
 		internal bool GetKeyPush(int key) => this.keybordPush[key] != 0;
 
+		/// <summary>
+		/// 現在のキーの状態を取得します。
+		/// </summary>
+		/// <param name="key">キー</param>
+		/// <returns>押されている場合true</returns>
+		internal bool GetKeyCurrent(int key) => this.keybordCurrent[key] != 0;
+
 		#endregion
 
 

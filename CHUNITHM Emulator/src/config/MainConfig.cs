@@ -94,7 +94,7 @@ namespace CHUNITHM_Emulator.Config {
 		/// 解像度、16:9(再起動後反映)
 		/// </summary>
 		[DataMember]
-		internal int Resolution { get; set; } = 1080;
+		internal int Resolution { get; set; } = 1920;
 
 		/// <summary>
 		/// フルスクリーンモード(再起動後反映)
