@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CHUNITHM_Emulator.Dialog {
@@ -51,6 +44,11 @@ namespace CHUNITHM_Emulator.Dialog {
 			this.IsFullScreenCB.Checked = isFullScreen;
 		}
 
+		/// <summary>
+		/// Widthの値が返られた時のイベント
+		/// </summary>
+		/// <param name="sender">イベント発生オブジェクト</param>
+		/// <param name="e">イベント</param>
 		private void Width_TextChanged(object sender, EventArgs e) {
 			try {
 				int width = Convert.ToInt32(this.WidthTB.Text);
@@ -60,6 +58,11 @@ namespace CHUNITHM_Emulator.Dialog {
 			}
 		}
 
+		/// <summary>
+		/// OKボタンが押されたイベント
+		/// </summary>
+		/// <param name="sender">イベント発生オブジェクト</param>
+		/// <param name="e">イベント</param>
 		private void Ok_Click(object sender, EventArgs e) {
 			this.IsFullScreen = this.IsFullScreenCB.Checked;
 			this.ResolutionWidth = Convert.ToInt32(this.WidthTB.Text);
@@ -67,6 +70,11 @@ namespace CHUNITHM_Emulator.Dialog {
 			this.Close();
 		}
 
+		/// <summary>
+		/// Cancelボタンが押されたイベント
+		/// </summary>
+		/// <param name="sender">イベント発生オブジェクト</param>
+		/// <param name="e">イベント</param>
 		private void Cancel_Click(object sender, EventArgs e) {
 			this.DialogResult = DialogResult.Cancel;
 			this.Close();

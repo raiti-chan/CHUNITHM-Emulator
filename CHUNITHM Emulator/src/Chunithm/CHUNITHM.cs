@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
 using System.Windows.Forms;
 using CHUNITHM_Emulator.Chunithm.Enums;
 using CHUNITHM_Emulator.Config;
@@ -132,6 +131,9 @@ namespace CHUNITHM_Emulator.Chunithm {
 
 		#region internal Method
 
+		/// <summary>
+		/// CHUNITHMの起動
+		/// </summary>
 		internal void Run() {
 
 			Trace.WriteLine("Run CHUNITHM.");
