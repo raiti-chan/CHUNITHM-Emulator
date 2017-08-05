@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wacom feel Multi-Touch Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restarter", "Restarter\Restarter.csproj", "{D90CBAB0-57ED-4DE9-A41E-81FD71F40C97}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RBD", "Raitis Binary Data\RBD.csproj", "{8A9E17A2-10A1-49B8-A922-204F28536D3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,22 @@ Global
 		{D90CBAB0-57ED-4DE9-A41E-81FD71F40C97}.Release|x64.Build.0 = Release|Any CPU
 		{D90CBAB0-57ED-4DE9-A41E-81FD71F40C97}.Release|x86.ActiveCfg = Release|Any CPU
 		{D90CBAB0-57ED-4DE9-A41E-81FD71F40C97}.Release|x86.Build.0 = Release|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Debug|ARM.Build.0 = Debug|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Debug|x64.Build.0 = Debug|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Debug|x86.Build.0 = Debug|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Release|ARM.Build.0 = Release|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Release|x64.ActiveCfg = Release|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Release|x64.Build.0 = Release|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Release|x86.ActiveCfg = Release|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
