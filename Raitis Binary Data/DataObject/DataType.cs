@@ -95,5 +95,9 @@
 		/// decimal型データ
 		/// </summary>
 		public const int Decimal = 14;
+		/// <summary>
+		/// byte配列型データ
+		/// </summary>
+		public const int ByteArray = 15;
 	}
 }

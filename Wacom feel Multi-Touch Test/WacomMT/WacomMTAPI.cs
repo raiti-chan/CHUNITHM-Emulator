@@ -33,9 +33,7 @@ namespace Wacom_feel_Multi_Touch_Test.WacomMT {
 		/// ドライバーへの接続
 		/// </summary>
 		/// <returns><see cref="WacomMTError"/></returns>
-		public static WacomMTError WacomMTInitialize() {
-			return _WacomMTInitialize(WACOM_MULTI_TOUCH_API_VERSION);
-		}
+		public static WacomMTError WacomMTInitialize() => _WacomMTInitialize(WACOM_MULTI_TOUCH_API_VERSION);
 
 
 		/// <summary>
@@ -76,7 +74,7 @@ namespace Wacom_feel_Multi_Touch_Test.WacomMT {
 
 					for (int i = 0; i < (uint)res; i++) {//値を取得
 						ids[i] = (int)Marshal.PtrToStructure(nowPtr, typeof(int));//メモリからintのデータを取得する。
-						nowPtr = (IntPtr)((int)nowPtr + sizeof(int));//ポインターを1データ分ずらす。
+						nowPtr = (IntPtr)((long)nowPtr + sizeof(int));//ポインターを1データ分ずらす。
 					}
 				} catch (Exception e) {
 					throw e;

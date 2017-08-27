@@ -40,9 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataObject\DataObjectBase.cs" />
     <Compile Include="DataObject\DataType.cs" />
     <Compile Include="DataObject\IDataObject.cs" />
+    <Compile Include="DataObject\IGroupData.cs" />
+    <Compile Include="Exception\WrongDataTypeException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

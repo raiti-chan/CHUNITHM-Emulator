@@ -1,0 +1,123 @@
+@startuml {RBDClassDiagram.png}
+title Raiti's Binary Data
+namespace RBD {
+
+	interface IRBD {
+		..Property..
+		+Factories() : Dictionary<int, IDataObjectFactry>
+		+Data() : IDataObject
+		+Data(data : IDataObject)
+
+		--Method--
+		+addFactory(factory : IDataObjectFactry)
+		+removeFactory(factory : IDataObjectFactry)
+		+removeFactory(dataType : int) : IDataObjectFactry
+	}
+
+	
+	namespace DataObject{
+
+		interface IDataObject {
+			..Property..
+			+Name() : string
+			+Name(name : string)
+			+DataType() : int
+			+IsGroup() : bool
+			+Parent() : IGroupData
+			+ByteSize() : int
+
+			..DataProperty..
+			+ByteData() : byte
+			+ByteData(data : byte)
+			+ShortData() : short
+			+ShortData(data : short)
+			+IntData() : int
+			+IntData(data : int) 
+			+LongData() : long
+			+LongData(data : long)
+			+FloatData() : float
+			+FloatData(data : float)
+			+DoubleData() : double
+			+DoubleData(data : double)
+			+BoolData() : bool
+			+BoolData(data : bool)
+			+CharData() : char
+			+CharData(data : char)
+			+StringData() : string
+			+StringData(data : string)
+			+SByteData() : sbyte
+			+SByteData(data : sbyte)
+			+UShortData() : ushort
+			+UShortData(data : ushort)
+			+UIntData() : uint
+			+UIntData(data : uint)
+			+ULongData() : ulong
+			+ULongData(data : ulong)
+			+DecimalData() : decimal
+			+DecimalData(data : decimal)
+			+ByteArrayData() : byte[]
+			+ByteArrayData(data : byte[])
+			+ObjectData() : object
+			+ObjectData(data : object)
+		}
+
+		abstract DataObjectBace {
+			..Field..
+			#_Name : string
+			#_ByteSize : int
+			#_Parent : IGroupData
+		}
+
+		IDataObject <|.. DataObjectBace
+
+		class DataType <<(S,#FF7700)static>> {
+			+{static}<<final>>Group : int = 0
+			+{static}<<final>>Byte : int = 1
+			+{static}<<final>>Short : int = 2
+			+{static}<<final>> Int16: int = 2
+			+{static}<<final>>Int : int = 3
+			+{static}<<final>>Int32 : int = 3
+			+{static}<<final>>Long : int = 4
+			+{static}<<final>>Int64 : int = 4
+			+{static}<<final>>Float : int = 5
+			+{static}<<final>>Single : int = 5
+			+{static}<<final>>Double : int = 6
+			+{static}<<final>>Bool : int = 7
+			+{static}<<final>>Boolean : int = 7
+			+{static}<<final>>Char : int = 8
+			+{static}<<final>>String : int = 9
+			+{static}<<final>>Sbyte : int = 10
+			+{static}<<final>>Ushort : int = 11
+			+{static}<<final>>UInt16 : int = 11
+			+{static}<<final>>Uint : int = 12
+			+{static}<<final>>UInt32 : int = 12
+			+{static}<<final>>Ulong : int = 13
+			+{static}<<final>>UInt64 : int = 13
+			+{static}<<final>>Decimal : int = 14
+			+{static}<<final>>ByteArray : int = 15
+		}
+
+		IDataObject -[hidden]right- DataType
+	}
+
+	namespace DataObjectFactory  {
+		interface IDataObjectFactry<T : IDataObject> {
+			+ToObject(data : byte[]) : T
+			+ToByte(T) : byte[]
+		}
+		IDataObjectFactry .right.> RBD.DataObject.IDataObject
+	}
+
+	namespace Exception {
+		class WrongDataTypeException {
+			..Property..
+			+DataType() : int
+			+WrongDataType() : int
+			--Method--
+			+WrongDataTypeException(dataType : int, wrongDataType : int)
+			+WrongDataTypeException(dataType : int, wrongDataType : int, message : string)
+			+WrongDataTypeException(dataType : int, wrongDataType : int, message : string, innerException)
+		}
+	}
+}
+@enduml
