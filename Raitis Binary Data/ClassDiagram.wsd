@@ -61,7 +61,7 @@ namespace RBD {
 			+ObjectData(data : object)
 		}
 
-		abstract DataObjectBace {
+		abstract DataObjectBase {
 			..Field..
 			#_Name : string
 			#_ByteSize : int

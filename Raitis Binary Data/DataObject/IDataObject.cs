@@ -46,6 +46,76 @@ namespace RBD.DataObject {
 		/// </summary>
 		short ShortData { set; get; }
 
+		/// <summary>
+		/// int型データのプロパティ
+		/// </summary>
+		int IntData { set; get; }
+
+		/// <summary>
+		/// long型データのプロパティ
+		/// </summary>
+		long LongData { set; get; }
+
+		/// <summary>
+		/// float型データのプロパティ
+		/// </summary>
+		float FloatData { set; get; }
+
+		/// <summary>
+		/// double型データのプロパティ
+		/// </summary>
+		double DoubleData { set; get; }
+
+		/// <summary>
+		/// bool型データのプロパティ
+		/// </summary>
+		bool BoolData { set; get; }
+
+		/// <summary>
+		/// charデータのプロパティ
+		/// </summary>
+		char CharData { set; get; }
+
+		/// <summary>
+		/// string型データ
+		/// </summary>
+		string StringData { set; get; }
+
+		/// <summary>
+		/// sbyte型データ
+		/// </summary>
+		sbyte SByteData { set; get; }
+
+		/// <summary>
+		/// ushort型データ
+		/// </summary>
+		ushort UShortData { set; get; }
+
+		/// <summary>
+		/// uint型データ
+		/// </summary>
+		uint UIntData { set; get; }
+
+		/// <summary>
+		/// ulong型データ
+		/// </summary>
+		ulong ULongData { set; get; }
+
+		/// <summary>
+		/// decimal型データ
+		/// </summary>
+		decimal DecimalData { set; get; }
+
+		/// <summary>
+		/// byte配列型データ
+		/// </summary>
+		byte[] ByteArrayData { set; get; }
+
+		/// <summary>
+		/// object型データ
+		/// </summary>
+		object ObjectData { set; get; }
+
 		#endregion
 	}
 }
