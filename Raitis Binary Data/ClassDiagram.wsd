@@ -64,11 +64,10 @@ namespace RBD {
 		abstract DataObjectBase {
 			..Field..
 			#_Name : string
-			#_ByteSize : int
 			#_Parent : IGroupData
 		}
 
-		IDataObject <|.. DataObjectBace
+		IDataObject <|.. DataObjectBase
 
 		class DataType <<(S,#FF7700)static>> {
 			+{static}<<final>>Group : int = 0

@@ -7,12 +7,52 @@ using System.Threading.Tasks;
 namespace RBD.DataObject {
 	internal abstract class DataObjectBace : IDataObject {
 
+		#region Private Field
+
+		/// <summary>
+		/// データの名前。
+		/// </summary>
+		protected string _Name;
+
+		/// <summary>
+		/// 親のグループデータ
+		/// </summary>
+		protected IGroupData _Parent;
+
+		#endregion
+
 		#region Property
-		public abstract string Name { get; set; }
+
+		/// <summary>
+		/// データの名前。
+		/// </summary>
+		public string Name {
+			get => this._Name;
+			set =>
+				//TODO IGroupDataの登録名を変更
+				this._Name = value;
+		}
+
+		/// <summary>
+		/// データの種類を表します。
+		/// </summary> 
 		public abstract int DataType { get; }
+
+		/// <summary>
+		/// このデータがグループデータなのかを表します。
+		/// </summary>
 		public abstract bool IsGroup { get; }
-		public abstract IGroupData Parent { get; }
+
+		/// <summary>
+		/// このデータの親データ。
+		/// </summary>
+		public IGroupData Parent { get => this._Parent; }
+
+		/// <summary>
+		/// このデータのバイト配列にした場合のサイズ。
+		/// </summary>
 		public abstract int ByteSize { get; }
+
 		#endregion
 
 		#region DataProperty
