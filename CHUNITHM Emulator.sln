@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restarter", "Restarter\Rest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RBD", "Raitis Binary Data\RBD.csproj", "{8A9E17A2-10A1-49B8-A922-204F28536D3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptTest", "ScriptTest\ScriptTest.csproj", "{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		Release|ARM = Release|ARM
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
+		Script CSharpSclipt|Any CPU = Script CSharpSclipt|Any CPU
+		Script CSharpSclipt|ARM = Script CSharpSclipt|ARM
+		Script CSharpSclipt|x64 = Script CSharpSclipt|x64
+		Script CSharpSclipt|x86 = Script CSharpSclipt|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D15087C5-7552-4C39-90E8-5DC89C893B83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -39,6 +45,14 @@ Global
 		{D15087C5-7552-4C39-90E8-5DC89C893B83}.Release|x64.Build.0 = Release|Any CPU
 		{D15087C5-7552-4C39-90E8-5DC89C893B83}.Release|x86.ActiveCfg = Release|Any CPU
 		{D15087C5-7552-4C39-90E8-5DC89C893B83}.Release|x86.Build.0 = Release|Any CPU
+		{D15087C5-7552-4C39-90E8-5DC89C893B83}.Script CSharpSclipt|Any CPU.ActiveCfg = Script CSharpSclipt|Any CPU
+		{D15087C5-7552-4C39-90E8-5DC89C893B83}.Script CSharpSclipt|Any CPU.Build.0 = Script CSharpSclipt|Any CPU
+		{D15087C5-7552-4C39-90E8-5DC89C893B83}.Script CSharpSclipt|ARM.ActiveCfg = Script CSharpSclipt|Any CPU
+		{D15087C5-7552-4C39-90E8-5DC89C893B83}.Script CSharpSclipt|ARM.Build.0 = Script CSharpSclipt|Any CPU
+		{D15087C5-7552-4C39-90E8-5DC89C893B83}.Script CSharpSclipt|x64.ActiveCfg = Script CSharpSclipt|Any CPU
+		{D15087C5-7552-4C39-90E8-5DC89C893B83}.Script CSharpSclipt|x64.Build.0 = Script CSharpSclipt|Any CPU
+		{D15087C5-7552-4C39-90E8-5DC89C893B83}.Script CSharpSclipt|x86.ActiveCfg = Script CSharpSclipt|Any CPU
+		{D15087C5-7552-4C39-90E8-5DC89C893B83}.Script CSharpSclipt|x86.Build.0 = Script CSharpSclipt|Any CPU
 		{59F6583F-40BB-4221-BDD0-0768097BA738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{59F6583F-40BB-4221-BDD0-0768097BA738}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59F6583F-40BB-4221-BDD0-0768097BA738}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -55,6 +69,14 @@ Global
 		{59F6583F-40BB-4221-BDD0-0768097BA738}.Release|x64.Build.0 = Release|x64
 		{59F6583F-40BB-4221-BDD0-0768097BA738}.Release|x86.ActiveCfg = Release|x86
 		{59F6583F-40BB-4221-BDD0-0768097BA738}.Release|x86.Build.0 = Release|x86
+		{59F6583F-40BB-4221-BDD0-0768097BA738}.Script CSharpSclipt|Any CPU.ActiveCfg = Script CSharpSclipt|Any CPU
+		{59F6583F-40BB-4221-BDD0-0768097BA738}.Script CSharpSclipt|Any CPU.Build.0 = Script CSharpSclipt|Any CPU
+		{59F6583F-40BB-4221-BDD0-0768097BA738}.Script CSharpSclipt|ARM.ActiveCfg = Script CSharpSclipt|Any CPU
+		{59F6583F-40BB-4221-BDD0-0768097BA738}.Script CSharpSclipt|ARM.Build.0 = Script CSharpSclipt|Any CPU
+		{59F6583F-40BB-4221-BDD0-0768097BA738}.Script CSharpSclipt|x64.ActiveCfg = Script CSharpSclipt|x64
+		{59F6583F-40BB-4221-BDD0-0768097BA738}.Script CSharpSclipt|x64.Build.0 = Script CSharpSclipt|x64
+		{59F6583F-40BB-4221-BDD0-0768097BA738}.Script CSharpSclipt|x86.ActiveCfg = Script CSharpSclipt|x86
+		{59F6583F-40BB-4221-BDD0-0768097BA738}.Script CSharpSclipt|x86.Build.0 = Script CSharpSclipt|x86
 		{D90CBAB0-57ED-4DE9-A41E-81FD71F40C97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D90CBAB0-57ED-4DE9-A41E-81FD71F40C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D90CBAB0-57ED-4DE9-A41E-81FD71F40C97}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -71,6 +93,14 @@ Global
 		{D90CBAB0-57ED-4DE9-A41E-81FD71F40C97}.Release|x64.Build.0 = Release|Any CPU
 		{D90CBAB0-57ED-4DE9-A41E-81FD71F40C97}.Release|x86.ActiveCfg = Release|Any CPU
 		{D90CBAB0-57ED-4DE9-A41E-81FD71F40C97}.Release|x86.Build.0 = Release|Any CPU
+		{D90CBAB0-57ED-4DE9-A41E-81FD71F40C97}.Script CSharpSclipt|Any CPU.ActiveCfg = Script CSharpSclipt|Any CPU
+		{D90CBAB0-57ED-4DE9-A41E-81FD71F40C97}.Script CSharpSclipt|Any CPU.Build.0 = Script CSharpSclipt|Any CPU
+		{D90CBAB0-57ED-4DE9-A41E-81FD71F40C97}.Script CSharpSclipt|ARM.ActiveCfg = Script CSharpSclipt|Any CPU
+		{D90CBAB0-57ED-4DE9-A41E-81FD71F40C97}.Script CSharpSclipt|ARM.Build.0 = Script CSharpSclipt|Any CPU
+		{D90CBAB0-57ED-4DE9-A41E-81FD71F40C97}.Script CSharpSclipt|x64.ActiveCfg = Script CSharpSclipt|Any CPU
+		{D90CBAB0-57ED-4DE9-A41E-81FD71F40C97}.Script CSharpSclipt|x64.Build.0 = Script CSharpSclipt|Any CPU
+		{D90CBAB0-57ED-4DE9-A41E-81FD71F40C97}.Script CSharpSclipt|x86.ActiveCfg = Script CSharpSclipt|Any CPU
+		{D90CBAB0-57ED-4DE9-A41E-81FD71F40C97}.Script CSharpSclipt|x86.Build.0 = Script CSharpSclipt|Any CPU
 		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -87,6 +117,38 @@ Global
 		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Release|x64.Build.0 = Release|Any CPU
 		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Release|x86.ActiveCfg = Release|Any CPU
 		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Release|x86.Build.0 = Release|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Script CSharpSclipt|Any CPU.ActiveCfg = Script CSharpSclipt|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Script CSharpSclipt|Any CPU.Build.0 = Script CSharpSclipt|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Script CSharpSclipt|ARM.ActiveCfg = Script CSharpSclipt|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Script CSharpSclipt|ARM.Build.0 = Script CSharpSclipt|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Script CSharpSclipt|x64.ActiveCfg = Script CSharpSclipt|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Script CSharpSclipt|x64.Build.0 = Script CSharpSclipt|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Script CSharpSclipt|x86.ActiveCfg = Script CSharpSclipt|Any CPU
+		{8A9E17A2-10A1-49B8-A922-204F28536D3E}.Script CSharpSclipt|x86.Build.0 = Script CSharpSclipt|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Debug|ARM.Build.0 = Debug|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Debug|x64.Build.0 = Debug|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Debug|x86.Build.0 = Debug|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Release|ARM.ActiveCfg = Release|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Release|ARM.Build.0 = Release|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Release|x64.ActiveCfg = Release|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Release|x64.Build.0 = Release|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Release|x86.ActiveCfg = Release|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Release|x86.Build.0 = Release|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Script CSharpSclipt|Any CPU.ActiveCfg = Script CSharpSclipt|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Script CSharpSclipt|Any CPU.Build.0 = Script CSharpSclipt|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Script CSharpSclipt|ARM.ActiveCfg = Script CSharpSclipt|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Script CSharpSclipt|ARM.Build.0 = Script CSharpSclipt|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Script CSharpSclipt|x64.ActiveCfg = Script CSharpSclipt|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Script CSharpSclipt|x64.Build.0 = Script CSharpSclipt|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Script CSharpSclipt|x86.ActiveCfg = Script CSharpSclipt|Any CPU
+		{DB6FE057-43A1-4053-A47F-F0533F6AD6B4}.Script CSharpSclipt|x86.Build.0 = Script CSharpSclipt|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
