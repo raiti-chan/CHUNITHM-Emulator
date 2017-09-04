@@ -7,7 +7,7 @@
     <ProjectGuid>{8A9E17A2-10A1-49B8-A922-204F28536D3E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Raitis_Binary_Data</RootNamespace>
+    <RootNamespace>RBD</RootNamespace>
     <AssemblyName>Raitis Binary Data</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -53,11 +53,13 @@
     <Compile Include="DataObject\DataType.cs" />
     <Compile Include="DataObject\IDataObject.cs" />
     <Compile Include="DataObject\IGroupData.cs" />
+    <Compile Include="DataObject\SimpleDataObject.cs" />
     <Compile Include="Exception\WrongDataTypeException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.wsd" />
+    <None Include="InteractiveScript\Init.csx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

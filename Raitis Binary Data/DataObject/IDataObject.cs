@@ -113,9 +113,34 @@ namespace RBD.DataObject {
 
 		/// <summary>
 		/// object型データ
+		/// objectじゃないデータもobject型にキャストされ取得されます。(ボックス化)
+		/// 代入時は正しいデータ型にキャストされます。データ型が違う場合<see cref="Exception.WrongDataTypeException"/>がスローされます。
 		/// </summary>
 		object ObjectData { set; get; }
 
+		#endregion
+
+		#region Method
+
+		/// <summary>
+		/// データを取得します。
+		/// 取得する型をジェネリクスで指定できます。
+		/// </summary>
+		/// <typeparam name="T">取得するデータの型</typeparam>
+		/// <returns>データ</returns>
+		T GetData<T>();
+
+		/// <summary>
+		/// データを設定します。
+		/// 設定するデータ型をジェネリクスで指定できます。
+		/// すでにデータが設定されていた場合そのデータが返されます。
+		/// データがない場合nullが返されます。
+		/// </summary>
+		/// <typeparam name="T">設定するデータ型</typeparam>
+		/// <param name="data">設定するデータ</param>
+		/// <returns>すでに設定されているデータ</returns>s
+		T SetData<T>(T data);
+		
 		#endregion
 	}
 }

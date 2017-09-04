@@ -59,6 +59,8 @@ namespace RBD {
 			+ByteArrayData(data : byte[])
 			+ObjectData() : object
 			+ObjectData(data : object)
+			+GetData<T>():T
+			+SetData<T>(data : T):T;
 		}
 
 		abstract DataObjectBase {
@@ -67,7 +69,105 @@ namespace RBD {
 			#_Parent : IGroupData
 		}
 
-		IDataObject <|.. DataObjectBase
+		class ByteDataObject {
+			..Field..
+			#_Data : byte
+		}
+
+		class ShortDataObject {
+			..Field..
+			#_Data : short
+		}
+
+		class IntDataObject {
+			..Field..
+			#_Data : int
+		}
+
+		class LongDataObject {
+			..Field..
+			#_Data : long
+		}
+
+		class FloatDataObject {
+			..Field..
+			#_Data : float
+		}
+
+		class DoubleDataObject {
+			..Field..
+			#_Data : double
+		}
+
+		class BoolDataObject {
+			..Field..
+			#_Data : bool
+		}
+
+		class CharDataObject {
+			..Field..
+			#_Data:char
+		}
+
+		class StringDataObject {
+			..Field..
+			#_Data:string
+		}
+
+		class SByteDataObject {
+			..Field..
+			#_Data:sbyte
+		}
+
+		class UShortDataObject {
+			..Field..
+			#_Data:ushort
+		}
+
+		class UIntDataObject {
+			..Field..
+			#_Data:uint
+		}
+
+		class ULongDataObject {
+			..Field..
+			#_Data:ulong
+		}
+
+		class DecimalDataObject {
+			..Field..
+			#_Data:decimal
+		}
+
+		class ByteArrayDataObject {
+			..Field..
+			#_Data:byte[]
+		}
+
+		class ObjectDataObject {
+			..Field..
+			#_Data:object
+		}
+		
+
+		IDataObject <|.down. DataObjectBase
+		DataObjectBase <|-- ByteDataObject
+		DataObjectBase <|-- ShortDataObject
+		DataObjectBase <|-- IntDataObject
+		DataObjectBase <|-- LongDataObject
+		DataObjectBase <|-- FloatDataObject
+		DataObjectBase <|-- DoubleDataObject
+		DataObjectBase <|-- BoolDataObject
+		DataObjectBase <|-- CharDataObject
+		DataObjectBase <|-- StringDataObject
+		DataObjectBase <|-- SByteDataObject
+		DataObjectBase <|-- UShortDataObject
+		DataObjectBase <|-- UIntDataObject
+		DataObjectBase <|-- ULongDataObject
+		DataObjectBase <|-- DecimalDataObject
+		DataObjectBase <|-- ByteArrayDataObject
+		DataObjectBase <|-- ObjectDataObject
+		
 
 		class DataType <<(S,#FF7700)static>> {
 			+{static}<<final>>Group : int = 0
@@ -85,12 +185,12 @@ namespace RBD {
 			+{static}<<final>>Boolean : int = 7
 			+{static}<<final>>Char : int = 8
 			+{static}<<final>>String : int = 9
-			+{static}<<final>>Sbyte : int = 10
-			+{static}<<final>>Ushort : int = 11
+			+{static}<<final>>SByte : int = 10
+			+{static}<<final>>UShort : int = 11
 			+{static}<<final>>UInt16 : int = 11
-			+{static}<<final>>Uint : int = 12
+			+{static}<<final>>UInt : int = 12
 			+{static}<<final>>UInt32 : int = 12
-			+{static}<<final>>Ulong : int = 13
+			+{static}<<final>>ULong : int = 13
 			+{static}<<final>>UInt64 : int = 13
 			+{static}<<final>>Decimal : int = 14
 			+{static}<<final>>ByteArray : int = 15

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RBD.Exception;
+using static RBD.DataObject.DataType;
 
 namespace RBD.DataObject {
-	internal abstract class DataObjectBace : IDataObject {
+	public abstract class DataObjectBace : IDataObject {
 
 		#region Private Field
 
@@ -56,22 +53,114 @@ namespace RBD.DataObject {
 		#endregion
 
 		#region DataProperty
-		public abstract byte ByteData { get; set; }
-		public abstract short ShortData { get; set; }
-		public abstract int IntData { get; set; }
-		public abstract long LongData { get; set; }
-		public abstract float FloatData { get; set; }
-		public abstract double DoubleData { get; set; }
-		public abstract bool BoolData { get; set; }
-		public abstract char CharData { get; set; }
-		public abstract string StringData { get; set; }
-		public abstract sbyte SByteData { get; set; }
-		public abstract ushort UShortData { get; set; }
-		public abstract uint UIntData { get; set; }
-		public abstract ulong ULongData { get; set; }
-		public abstract decimal DecimalData { get; set; }
-		public abstract byte[] ByteArrayData { get; set; }
-		public abstract object ObjectData { get; set; }
+
+		/// <summary>
+		/// byte型データのプロパティ
+		/// </summary>
+		public virtual byte ByteData { set => throw new WrongDataTypeException<byte>(this.DataType, Byte); get => throw new WrongDataTypeException<byte>(this.DataType, Byte); }
+
+		/// <summary>
+		/// short型データのプロパティ
+		/// </summary>
+		public virtual short ShortData { set => throw new WrongDataTypeException<short>(this.DataType, Short); get => throw new WrongDataTypeException<short>(this.DataType, Short); }
+
+		/// <summary>
+		/// int型データのプロパティ
+		/// </summary>
+		public virtual int IntData { set => throw new WrongDataTypeException<int>(this.DataType, wrongDataType:Int); get => throw new WrongDataTypeException<int>(this.DataType, wrongDataType: Int); }
+
+		/// <summary>
+		/// long型データのプロパティ
+		/// </summary>
+		public virtual long LongData { set => throw new WrongDataTypeException<long>(this.DataType, Long); get => throw new WrongDataTypeException<long>(this.DataType, Long); }
+
+		/// <summary>
+		/// float型データのプロパティ
+		/// </summary>
+		public virtual float FloatData { set => throw new WrongDataTypeException<float>(this.DataType, Float); get => throw new WrongDataTypeException<float>(this.DataType, Float); }
+
+		/// <summary>
+		/// double型データのプロパティ
+		/// </summary>
+		public virtual double DoubleData { set => throw new WrongDataTypeException<double>(this.DataType, Doube); get => throw new WrongDataTypeException<double>(this.DataType, Doube); }
+
+		/// <summary>
+		/// bool型データのプロパティ
+		/// </summary>
+		public virtual bool BoolData { set => throw new WrongDataTypeException<bool>(this.DataType, Bool); get => throw new WrongDataTypeException<bool>(this.DataType, Bool); }
+
+		/// <summary>
+		/// charデータのプロパティ
+		/// </summary>
+		public virtual char CharData { set => throw new WrongDataTypeException<char>(this.DataType, Char); get => throw new WrongDataTypeException<char>(this.DataType, Char); }
+
+		/// <summary>
+		/// string型データ
+		/// </summary>
+		public virtual string StringData { set => throw new WrongDataTypeException<string>(this.DataType, String); get => throw new WrongDataTypeException<string>(this.DataType, String); }
+
+		/// <summary>
+		/// sbyte型データ
+		/// </summary>
+		public virtual sbyte SByteData { set => throw new WrongDataTypeException<sbyte>(this.DataType, SByte); get => throw new WrongDataTypeException<sbyte>(this.DataType, SByte); }
+
+		/// <summary>
+		/// ushort型データ
+		/// </summary>
+		public virtual ushort UShortData { set => throw new WrongDataTypeException<ushort>(this.DataType, UShort); get => throw new WrongDataTypeException<ushort>(this.DataType, UShort); }
+
+		/// <summary>
+		/// uint型データ
+		/// </summary>
+		public virtual uint UIntData { set => throw new WrongDataTypeException<uint>(this.DataType, UInt); get => throw new WrongDataTypeException<uint>(this.DataType, UInt); }
+
+		/// <summary>
+		/// ulong型データ
+		/// </summary>
+		public virtual ulong ULongData { set => throw new WrongDataTypeException<ulong>(this.DataType, ULong); get => throw new WrongDataTypeException<ulong>(this.DataType, ULong); }
+
+		/// <summary>
+		/// decimal型データ
+		/// </summary>
+		public virtual decimal DecimalData { set => throw new WrongDataTypeException<decimal>(this.DataType, Decimal); get => throw new WrongDataTypeException<decimal>(this.DataType, Decimal); }
+
+		/// <summary>
+		/// byte配列型データ
+		/// </summary>
+		public virtual byte[] ByteArrayData { set => throw new WrongDataTypeException<byte[]>(this.DataType, ByteArray); get => throw new WrongDataTypeException<byte[]>(this.DataType, ByteArray); }
+
+		/// <summary>
+		/// object型データ
+		/// objectじゃないデータもobject型にキャストされ取得されます。(ボックス化)
+		/// 代入時は正しいデータ型にキャストされます。データ型が違う場合<see cref="WrongDataTypeException"/>がスローされます。
+		/// </summary>
+		public abstract object ObjectData { set; get; }
+
 		#endregion
+
+		#region Method
+
+		/// <summary>
+		/// データを取得します。
+		/// 取得する型をジェネリクスで指定できます。
+		/// </summary>
+		/// <typeparam name="T">取得するデータの型</typeparam>
+		/// <returns>データ</returns>
+		public abstract T GetData<T>();
+
+		/// <summary>
+		/// データを設定します。
+		/// 設定するデータ型をジェネリクスで指定できます。
+		/// すでにデータが設定されていた場合そのデータが返されます。
+		/// データがない場合nullが返されます。
+		/// </summary>
+		/// <typeparam name="T">設定するデータ型</typeparam>
+		/// <param name="data">設定するデータ</param>
+		/// <returns>すでに設定されているデータ</returns>
+		public abstract T SetData<T>(T data);
+
+
+		#endregion
+
 	}
 }

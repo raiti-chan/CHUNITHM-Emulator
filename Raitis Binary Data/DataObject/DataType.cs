@@ -66,11 +66,11 @@
 		/// <summary>
 		/// sbyte型データ
 		/// </summary>
-		public const int Sbyte = 10;
+		public const int SByte = 10;
 		/// <summary>
 		/// ushort型データ
 		/// </summary>
-		public const int Ushort = 11;
+		public const int UShort = 11;
 		/// <summary>
 		/// ushort型データの別名
 		/// </summary>
@@ -78,7 +78,7 @@
 		/// <summary>
 		/// uint型データ
 		/// </summary>
-		public const int Uint = 12;
+		public const int UInt = 12;
 		/// <summary>
 		/// uint型データの別名
 		/// </summary>
@@ -86,7 +86,7 @@
 		/// <summary>
 		/// ulong型データ
 		/// </summary>
-		public const int Ulong = 13;
+		public const int ULong = 13;
 		/// <summary>
 		/// ulong型データの別名
 		/// </summary>
